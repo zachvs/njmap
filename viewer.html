@@ -1,0 +1,94 @@
+<html>
+<head>
+	<title>Transit Summary Map of Northern New Jersey</title>
+	<link rel="stylesheet" type="text/css" href="css/map.css">
+	<link rel="stylesheet" type="text/css" href="css/browser.css">
+
+	<script type="text/javascript" src="js/extjs/ext-core.js"></script>
+
+	<script type="text/javascript" src="js/panojs/utils.js"></script>
+	<script type="text/javascript" src="js/panojs/PanoJS.js"></script>
+	<script type="text/javascript" src="js/panojs/controls.js"></script>
+	<script type="text/javascript" src="js/panojs/pyramid_imgcnv.js"></script>
+	<script type="text/javascript" src="js/panojs/control_thumbnail.js"></script>
+	<script type="text/javascript" src="js/panojs/control_info.js"></script>
+	<script type="text/javascript" src="js/panojs/control_svg.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/panojs.css">
+
+	<script language="javascript">
+	<!--
+
+	PanoJS.MSG_BEYOND_MIN_ZOOM = null;
+	PanoJS.MSG_BEYOND_MAX_ZOOM = null;
+	var viewer = null;
+
+	function createViewer( viewer, dom_id, url, prefix, w, h ) {
+	    if (viewer) return;
+
+	    var MY_URL      = url;
+	    var MY_PREFIX   = prefix;
+	    var MY_TILESIZE = 256;
+	    var MY_WIDTH    = w;
+	    var MY_HEIGHT   = h;
+	    var myPyramid = new ImgcnvPyramid( MY_WIDTH, MY_HEIGHT, MY_TILESIZE);
+
+	    var myProvider = new PanoJS.TileUrlProvider('','','');
+	    myProvider.assembleUrl = function(xIndex, yIndex, zoom) {
+	        return MY_URL + '/' + MY_PREFIX + myPyramid.tile_filename( zoom, xIndex, yIndex );
+	    }
+
+	    viewer = new PanoJS(dom_id, {
+	        tileUrlProvider : myProvider,
+	        tileSize        : myPyramid.tilesize,
+	        initialZoom		: 2,
+	        maxZoom         : myPyramid.getMaxLevel(),
+	        imageWidth      : myPyramid.width,
+	        imageHeight     : myPyramid.height,
+	        blankTile       : 'images/blank.gif',
+	        loadingTile     : 'images/progress.gif'
+	    });
+
+	    Ext.EventManager.addListener( window, 'resize', callback(viewer, viewer.resize) );
+	    viewer.init();
+	};
+
+	// TODO fix onload
+	window.onload = function() {
+	createViewer( viewer, 'viewer', 'tiles', 'tile_', 6000, 8182  );
+	};
+
+
+	//-->
+	</script>
+</head>
+<body>
+
+<div id="pageinfo">
+	<h1><a href="map.html">Public Transit Summary Map<br/>of N. New&nbsp;Jersey</a></h1>
+	<h2>(and other points west of the Hudson)</h2>
+
+	<div id="links">Download: <a href="downloadable.png">PNG</a> (534 KB)</div>
+
+	<div id="credit">&copy; 2014-2015 <a href="http://adv.entur.es/of/zach">Zach van Schouwen</a></div>
+
+	<div id="donate">
+		Really love it? You can buy me a beer:
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+		<input type="hidden" name="cmd" value="_s-xclick">
+		<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+		">
+		<input type="image" src="images/pbr.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+		<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+		</form>
+	</div>
+
+	</div>
+
+	<div class="viewer" id="viewer">
+		  <div class="well"><!-- --></div>
+		  <div class="surface"><!-- --></div>
+	</div>
+
+</body>
+</html>
