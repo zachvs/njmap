@@ -48,14 +48,11 @@ h2 {
 	color: #25d;
 }
 
-#donate {
-	font-size: 0.8em;
+#credit {
+	font-size: 0.7em;
 }
 
-#donate form {
-	display: inline;
-}
-
-#donate form input {
-	vertical-align: middle;
+#license {
+	margin: 0.5em auto;
+	text-align: center;
 }

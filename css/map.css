@@ -52,3 +52,15 @@ h2 {
 	width: 859px;
 	margin: 0 auto;
 }
+
+#donate {
+	font-size: 0.8em;
+}
+
+#donate form {
+	display: inline;
+}
+
+#donate form input {
+	vertical-align: middle;
+}
